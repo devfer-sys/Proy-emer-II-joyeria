@@ -5,7 +5,9 @@ from database import db
 
 # Lista de empleados con sus datos (nombre, apellidos, cargo, contrasena)
 empleados = [
-    ('Juan', 'Perez', 'Administrador', '12358', 'Activo')
+    ('Mario', 'Torrez', 'Administrador', '72068397', 'Activo'),
+    ('Ana', 'Arce', 'Administrador', '13760190', 'Activo'),
+    ('Franklin', 'Fernandez', 'Administrador', '6954009', 'Activo')
 ]
 
 # Lista de clientes con datos únicos (nombre_completo, email, telefono)
