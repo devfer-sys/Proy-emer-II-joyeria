@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-box">
+        <h2>Iniciar sesión</h2>
+
+        <!-- Mensajes de flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="alert">
+                    {% for category, message in messages %}
+                        <li class="alert alert-{{ category }}" id="flash-message">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+
+                <script>
+                    setTimeout(function() {
+                        var flashMessage = document.getElementById('flash-message');
+                        if (flashMessage) {
+                            flashMessage.style.display = 'none';
+                        }
+                    }, 2000);  // 2000 milisegundos = 2 segundos
+                </script>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Formulario de inicio de sesión -->
+        <form method="POST">
+            <div class="mb-3">
+                <label for="" class="form-label">Nombre de usuario</label>
+                <input type="text" class="form-control" id="" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="" name="contrasena" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

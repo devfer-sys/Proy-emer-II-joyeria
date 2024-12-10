@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Catálogo de Compras{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Compras</h1>
+
+    <div class="action-buttons">
+        <a href="{{ url_for('compra.registrar') }}" class="btn btn-gray">Registrar Compra</a>
+    </div>
+
+    {% if compras %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in compras %}
+            <tr>
+                <!-- Mostrar los campos fijos de la compra: nombre_cliente y nombre_producto -->
+                <td>{{ item.nombre_cliente }}</td>
+                <td>{{ item.nombre_producto }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>{{ item.fecha.strftime('%d/%m/%Y') }}</td>
+                <td>
+                    <a href="{{ url_for('compra.editar', id_com=item.id_com) }}" class="btn btn-blue">Editar</a>
+                    {% if session.get('empleado_cargo') == 'Administrador' %}
+                    <a href="{{ url_for('compra.delete', id_com=item.id_com) }}" class="btn btn-danger">Eliminar</a>
+                    {% endif %}
+                    <a href="{{ url_for('compra.facturar_pdf', id_com=item.id_com) }}" class="btn btn-success">Imprimir Factura</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-muted">No hay compras registradas.</p>
+    {% endif %}
+</div>
+{% endblock %}

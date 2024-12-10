@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content text-center py-5">
+        <h1 class="display-4">Joyería Luxor</h1>
+        <p class="lead welcome-text">
+            Bienvenido a Joyería Luxor, donde la elegancia armoniza y los diseños de vanguardia se unen para crear joyas que perduran en el tiempo.
+        </p>
+        <div class="hero-buttons mt-4">
+            <button class="btn btn-primary btn-lg" onclick="scrollToCatalog()">Ver Catálogo</button>
+            <button class="btn btn-success btn-lg" onclick="scrollToInfo()">Comprar Ahora</button>
+        </div>
+    </div>
+    <div class="hero-image text-center">
+        <img src="{{ url_for('static', filename='img/jewelry-store.png') }}" alt="Interior de la joyería" class="img-fluid mt-4">
+    </div>
+</div>
+<div class="luxury-section">
+    <h2 class="text-center mb-4">Artesanía y Diseño de Lujo</h2>
+    <div class="luxury-content">
+        <div class="luxury-column">
+            <h3>Nuestra Historia</h3>
+            <p>Joyería Luxor es una empresa familiar con más de 30 años de tradición. Nos enorgullecemos de nuestro legado de excelencia y llevar las más altas normas de calidad a cada una de nuestras creaciones.</p>
+        </div>
+        <div class="luxury-column">
+            <h3>Diseño Exclusivo</h3>
+            <p>Nuestros diseñadores trabajan arduamente para crear piezas únicas que reflejen la elegancia y el estilo de nuestros clientes. Cada joya es una obra de arte diseñada con pasión y atención al detalle.</p>
+        </div>
+    </div>
+</div>
+<div id="catalog-section" class="luxury-section py-5">
+    <h2 class="text-center mb-4">Nuestro Catálogo</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Disponibilidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in productos %}
+                <tr>
+                    <td>{{ item.nombre }}</td>
+                    <td>{{ item.precio }} Bs.</td>
+                    <td>{{ item.disponibilidad }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="services-section" class="services-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Nuestros Servicios</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Personalización de Joyas</h5>
+                <p>Diseñamos joyas exclusivas según tus necesidades y preferencias. Trabajamos contigo para crear la pieza perfecta.</p>
+            </div>
+            <div class="col-md-6">
+                <h5>Reparación y Mantenimiento</h5>
+                <p>Ofrecemos servicios de reparación, limpieza y mantenimiento para que tus joyas luzcan siempre como nuevas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Testimonial Section -->
+<div id="testimonials-section" class="testimonials-section py-5 bg-white text-dark">
+    <div class="container">
+        <h2 class="text-center mb-4">Testimonios de Nuestros Clientes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <blockquote class="blockquote text-center">
+                    <p>"El mejor servicio que he recibido. Las joyas son impresionantes y de calidad inigualable."</p>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote text-center">
+                    <p>"Recomiendo Joyería Luxor a todos mis amigos. ¡No podrían estar más felices!"</p>
+                   
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote text-center">
+                    <p>"Encontré el regalo perfecto aquí. Su atención al detalle es impresionante."</p>
+                   
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info-section" class="store-info-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Información de Nuestra Tienda</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <strong>
+                <h5>Ubicación</h5>
+                    <p>Avenida Principal #123, La Paz, Bolivia</p>
+                    <p>Horario de Atención: Lunes a Sábado, 9:00 AM - 7:00 PM</p>
+                </strong>
+            </div>
+            <div class="col-md-4">
+                <strong>
+                    <h5>Contacto</h5>
+                    <p>Teléfono: 222 4512324</p>
+                    <p>Email: contacto@joyerialuxor.com</p>
+                    <p>WhatsApp: +591 65432189</p>
+                </strong>
+            </div>
+            <div class="col-md-4">
+                <h5>Redes Sociales</h5>
+                <p>
+                    <img src="../static/img/facebook_4494464.png" alt="Facebook" width="30" height="30"> <strong>JoyeriaLuxor</strong>
+                    <br>
+                    <br>
+                    <img src="../static/img/instagram_4494468.png" alt="Instagram" width="30" height="30"> <strong>JoyeriaLuxor</strong>
+                    <br>
+                    <br>
+                    <img src="../static/img/twitter_4494465.png" alt="Twitter" width="30" height="30"> <strong>JoyeriaLuxor</strong>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function scrollToCatalog() {
+        document.getElementById("catalog-section").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function scrollToInfo() {
+        document.getElementById("info-section").scrollIntoView({ behavior: "smooth" });
+    }
+</script>
+{% endblock %}

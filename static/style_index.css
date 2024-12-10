@@ -1,0 +1,182 @@
+/* Luxor Jewelry Store Styles */
+
+/* General Styles */
+body {
+    font-family: 'Playfair Display', serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.luxor-section {
+    padding: 4rem 0;
+}
+
+.luxor-section-title {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.luxor-subtitle {
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #f8f8f8;
+    padding: 4rem 0;
+}
+
+.luxor-title {
+    font-size: 3.5rem;
+    color: #1a1a1a;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.luxor-welcome-text {
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.luxor-hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.luxor-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.luxor-btn-primary {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 2px solid #1a1a1a;
+}
+
+.luxor-btn-secondary {
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+}
+
+.luxor-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.luxor-hero-img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Luxury Section */
+.luxor-luxury-section {
+    background-color: #fff;
+}
+
+.luxor-luxury-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.luxor-luxury-column {
+    flex: 1;
+}
+
+/* Catalog Section */
+.luxor-catalog-section {
+    background-color: #f8f8f8;
+}
+
+.luxor-table {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.luxor-table thead {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.luxor-table th, .luxor-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+/* Services Section */
+.luxor-services-section {
+    background-color: #fff;
+}
+
+/* Testimonials Section */
+.luxor-testimonials-section {
+    background-color: #f8f8f8;
+}
+
+.luxor-testimonial {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.luxor-testimonial p {
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* Info Section */
+.luxor-info-section {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.luxor-info-section .luxor-section-title,
+.luxor-info-section .luxor-subtitle {
+    color: #fff;
+}
+
+.luxor-social-icons img {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.luxor-social-icons span {
+    vertical-align: middle;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .luxor-luxury-content {
+        flex-direction: column;
+    }
+
+    .luxor-hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .luxor-btn {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}

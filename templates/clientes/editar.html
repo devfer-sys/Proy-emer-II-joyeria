@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Catalogo de Productos{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Editar Cliente</h1>
+    
+    <form action="{{ url_for('cliente.editar', id_cli=cliente.id_cli) }}" method="POST">
+        <div class="mb-3">
+            <label for="nombre_completo">Nombre Completo</label>
+            <input type="text" class="form-control" name="nombre_completo" value="{{cliente.nombre_completo}}" required>
+            
+        </div>
+        <div class="mb-3">
+            <label for="email">Correo Electrónico</label>
+            <input type="text" class="form-control" name="email" value="{{cliente.email}}" required>
+            
+        </div>
+        <div class="mb-3">
+            <label for="estado">Estado</label>
+            <select class="form-control" name="estado" required>
+                <option value="Activo" {% if cliente.estado == 'Activo' %}selected{% endif %}>Activo</option>
+                <option value="No Activo" {% if cliente.estado == 'No Activo' %}selected{% endif %}>No Activo</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control" name="telefono" value="{{cliente.telefono}}" required>
+
+        </div>
+        
+        <button type="submit" class="btn btn-blue">Guardar Cliente</button>
+        <a href="{{ url_for('cliente.index') }}" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

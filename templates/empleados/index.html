@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Registro de empleados{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Registro de empleados</h1>
+    
+    <div class="action-buttons">
+        <a href="{{ url_for('empleado.registrar') }}" class="btn btn-gray">Registrar empleado</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Cargo</th>
+                <th>Contraseña</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in empleados %}
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.apellidos }}</td>
+                <td>{{ item.cargo }}</td>
+                <td>{{ item.contrasena }}</td>
+                <td>{{ item.estado }}</td>
+                <td>
+                    <a href="{{ url_for('empleado.editar', id_emp=item.id_emp)}}" class="btn btn-blue ">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

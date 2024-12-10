@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Catalogo de Productos{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Editar Compra</h1>
+    
+    <form action="{{ url_for('compra.editar', id_com=compra.id_com) }}" method="POST">
+        <div class="form-group">
+            <label for="" class="form-label">Cliente</label>
+            <select name="cliente_id" class="form-control" id="" required>
+                <option value="">Seleccione un cliente</option>
+                    {% for cliente in clientes %}
+                        <option value="{{cliente.id_cli}}" {% if cliente.id_cli == compra.cliente_id %} selected{% endif %}>{{cliente.nombre_completo}}</option>
+                    {% endfor %}
+            </select>         
+            
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Producto</label>
+            <select name="producto_id" class="form-control" id="" required>
+                <option value="">Seleccione un producto</option>
+                    {% for producto in productos %}
+                        <option value="{{producto.id_pro}}" {% if producto.id_pro == compra.producto_id %} selected{% endif %}>{{producto.nombre}}</option>
+                    {% endfor %}
+            </select>         
+            
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" name="cantidad" value="{{compra.cantidad}}" required>
+            
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Fecha</label>
+            <input type="date" class="form-control" name="fecha" value="{{compra.fecha.strftime('%Y-%m-%d')}}" required>
+        <button type="submit" class="btn btn-blue">Guardar Compra</button>
+        <a href="{{ url_for('compra.index') }}" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}
+    
+
+
+
+
+

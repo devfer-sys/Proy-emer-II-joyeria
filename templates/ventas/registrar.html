@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Registrar Ventas{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Registrar Venta</h1>
+
+    <form action="{{ url_for('venta.registrar') }}" method="POST">
+
+        <div class="form-group">
+            <label for="" class="form-label">Compra</label>
+            <select name="compra_id" class="form-control" id="" required>
+                <option value="">Seleccione un compra</option>
+                {% for compra in compras %}
+                <option value="{{compra.id_com}}">{{compra.id_com}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Producto</label>
+            <select name="producto_id" class="form-control" id="" required>
+                <option value="">Seleccione un producto</option>
+                {% for producto in productos %}
+                <option value="{{producto.id_pro}}">{{producto.nombre}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Cantidad Vendida</label>
+            <input type="number" class="form-control" name="cant_vend" required>
+
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Ingresos</label>
+            <input type="number" class="form-control" name="ingresos" required>
+        </div>
+        <button type="submit" class="btn btn-blue">Guardar Compra</button>
+        <a href="{{ url_for('venta.index') }}" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

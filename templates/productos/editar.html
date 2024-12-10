@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Catalogo de Productos{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Editar Producto</h1>
+    
+    <form action="{{ url_for('producto.editar', id_pro=producto.id_pro) }}" method="POST">
+        <div class="mb-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" value="{{producto.nombre}}" required>
+            
+        </div>
+        <div class="mb-3">
+            <label for="precio">Precio</label>
+            <input type="number" class="form-control" name="precio" value="{{producto.precio}}" required>
+            
+        </div>
+        <div class="mb-3">
+            <label for="stock">Stock</label>
+            <input type="number" class="form-control" name="stock" value="{{producto.stock}}" required>
+
+        </div>       
+        <button type="submit" class="btn btn-blue">Guardar Producto</button>
+        <a href="{{ url_for('producto.index') }}" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
+    
+
+
+
+

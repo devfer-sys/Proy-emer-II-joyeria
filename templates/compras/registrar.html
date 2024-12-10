@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Registrar Compras{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Registrar Compra</h1>
+
+    <form action="{{ url_for('compra.registrar') }}" method="POST">
+
+        <div class="form-group">
+            <label for="" class="form-label">Cliente</label>
+            <select name="cliente_id" class="form-control" id="" required>
+                <option value="">Seleccione un cliente</option>
+                {% for cliente in clientes %}
+                    {% if cliente.estado == 'Activo' %}
+                        <option value="{{cliente.id_cli}}">{{cliente.nombre_completo}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            
+
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Producto</label>
+            <select name="producto_id" class="form-control" id="" required>
+                <option value="">Seleccione un producto</option>
+                {% for producto in productos %}
+                    {% if producto.disponibilidad == 'Disponible' %}
+                        <option value="{{producto.id_pro}}">{{producto.nombre}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" name="cantidad" required>
+
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Fecha</label>
+            <input type="date" class="form-control" name="fecha" required>
+
+        </div>
+        <button type="submit" class="btn btn-blue">Guardar Compra</button>
+        <a href="{{ url_for('producto.index') }}" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

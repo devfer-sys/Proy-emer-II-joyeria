@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Registro de Clientes{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Registro de Clientes</h1>
+    
+    <div class="action-buttons">
+        <a href="{{ url_for('cliente.registrar') }}" class="btn btn-gray">Registrar Cliente</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo Electrónico</th>
+                <th>Teléfono</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in clientes %}
+            <tr>
+                <td>{{ item.nombre_completo }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.telefono }}</td>
+                <td>{{ item.estado }}</td>
+                
+                <td>
+                    <a href="{{ url_for('cliente.editar', id_cli=item.id_cli)}}" class="btn btn-blue ">Editar</a>
+                    {% if session.get('empleado_cargo') == 'Administrador' %}
+                    <a href="{{ url_for('cliente.delete', id_cli=item.id_cli)}}" class="btn btn-danger ">Eliminar</a>
+                    {% endif %}
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
